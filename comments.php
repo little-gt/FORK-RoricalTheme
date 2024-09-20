@@ -11,7 +11,7 @@
               </div>
               <div class="pl-4">
                 <h4 class="display-3">评论区</h4>
-                <p><?php $this->commentsNum('完全没人呢', '只有一个人', '%d 条评论呢 '); ?></p>
+                <p><?php $this->commentsNum('快来评论吧', '只有一条评论', '%d 条评论 '); ?></p>
             </div>
                         
             
@@ -66,7 +66,7 @@ echo $commentClass;
 						?> 
                     <p class="breakword"><?php $comments->content(); ?></p>
                     <?php if ($comments->status == 'waiting') { ?>
-						<span class="badge badge-pill badge-default text-white">评论审核ing...</span>
+						<span class="badge badge-pill badge-default text-white">评论审核ING...</span>
 					<?php } ?>
                     <?php $comments->reply('<i class="fa fa-reply"></i>'); ?>
                   </div>
