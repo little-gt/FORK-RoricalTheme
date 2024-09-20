@@ -29,7 +29,7 @@ $this->need('header.php');
       <div class="col px-0"> 
        <div class="row justify-content-center align-items-center"> 
         <div class="col-lg-7 text-center pt-lg"> 
-         <img src="<?php $this->options->AvatarUrl() ?>" style="width: 200px;" class="img-fluid pic rounded-circle shadow">
+         <img src="<?php $this->options->AvatarUrl() ?>" style="width: 200px;" class="img-fluid rounded-circle shadow">
          <div class="splight_div">
          <h1 class="display-1 text-white splight" data-spotlight="<?php $this->options->title() ?>"><?php $this->options->title() ?></h1>
          </div>
