@@ -7,19 +7,19 @@
     <meta name="renderer" content="webkit">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="<?php $this->options->siteUrl('/favicon.ico') ?>" rel="icon" type="image/png" />
     <title><?php $this->archiveTitle(array(
             'category'  =>  _t('%s下的文章'),
             'search'    =>  _t('包含关键字 %s 的文章'),
             'tag'       =>  _t('标签 %s 下的文章'),
             'author'    =>  _t('%s 的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?></title>
+    <meta itemprop="image" content="https://blog.garfieldtom.cool/resource/images/64def9d3661c6c8e54b4c292.jpg" />
     <!-- Analytics -->
     <?php $this->options->Analytic() ?>
-	
+	<!-- Jquery -->
     <script src="<?php $this->options->themeUrl('./assets/js/jquery.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('./assets/js/jquery.pjax.js'); ?>"></script>
-    
-    <link href="<?php $this->options->logoUrl() ?>" rel="icon" type="image/png" />
     <!-- Fonts -->
     <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">-->
     <!-- Icons -->
@@ -32,24 +32,27 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/css/style.css'); ?>" />
     <link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/css/csshake.min.css'); ?>" />
     <link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/css/viewer.min.css'); ?>" />
-    <link href="<?php $this->options->themeUrl('./assets/css/font.css'); ?>" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/css/prism.css'); ?>" />
+    <!-- JS -->
     <script src="<?php $this->options->themeUrl('./assets/js/lazyload.js'); ?>" charset="utf-8"></script>
     <script src="<?php $this->options->themeUrl('./assets/js/functions.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('./assets/js/md5.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('./assets/js/viewer.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('./assets/js/jquery-viewer.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('./assets/js/prism.js'); ?>"></script>
     <!--[if lt IE 9]>
-    <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/r29/html5.min.js"></script>
-    <script src="//cdnjscn.b0.upaiyun.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/html5shiv/3.7.3/html5shiv.min.js" type="application/javascript"></script>
+    <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/respond.js/1.4.2/respond.min.js" type="application/javascript"></script>
     <![endif]-->
-	<link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/css/okaikia.css'); ?>" />
+	<!-- okaikia -->
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/css/okaikia.css'); ?>" />
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
 </head>
 <body>
 
 <!--[if lt IE 8]>
-    <div class="browsehappy" role="dialog"><?php _e('当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="https://www.microsoft.com/edge/">升级你的浏览器</a>'); ?>.</div>
+    <div class="browsehappy" role="dialog"><?php _e('当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="https://www.microsoft.com/zh-cn/edge">升级你的浏览器</a>'); ?>.</div>
 <![endif]-->
 
 <header class="header-global">
@@ -59,9 +62,9 @@
 <a id="logo" href="<?php $this->options->siteUrl(); ?>" class="navbar-brand mr-lg-5">
   <img src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>">
 </a>
-<?php else: ?>
+        <?php else: ?>
 <a id="logo" class="text-white" href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title() ?></a>
-<?php endif; ?>
+        <?php endif; ?>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -73,9 +76,9 @@
 <a id="logo" href="<?php $this->options->siteUrl(); ?>">
   <img src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>">
 </a>
-<?php else: ?>
+              <?php else: ?>
 <a id="logo" href="<?php $this->options->siteUrl(); ?>" class="display-3"><?php $this->options->title() ?></a>
-<?php endif; ?>
+              <?php endif; ?>
               </div>
               <div class="col-6 collapse-close">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,6 +94,7 @@
             	
               <a href="#" class="nav-link" data-toggle="dropdown" role="button">
                 <i class="ni ni-ui-04 d-lg-none"></i>
+            <!--页面标签-->
                 <span class="nav-link-inner--text">页面</span>
               </a>
               <div class="dropdown-menu dropdown-menu-xl">
@@ -118,6 +122,23 @@
                 </div>
               </div>
             </li>
+            <!--结束页面标签-->
+            
+            <!--指南板块-->
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link" data-toggle="dropdown" role="button">
+                <i class="ni ni-compass-04 d-lg-none"></i>
+                <span class="nav-link-inner--text">指南</span>
+               </a>
+              <div class="dropdown-menu">
+               <a href="https://www.bilibili.com/" title="哔哩哔哩" class="dropdown-item ">哔哩哔哩</a>
+               <a href="https://www.ilab-x.com/" title="实验空间" class="dropdown-item ">实验空间</a>
+               <a href="https://www.un.org/library/" title="世界图书" class="dropdown-item ">世界图书</a>
+              </div>
+            </li>
+            <!--结束指南板块-->
+            
+            <!--文章分类-->
             <li class="nav-item dropdown">
               <a href="#" class="nav-link" data-toggle="dropdown" role="button">
                 <i class="ni ni-collection d-lg-none"></i>
@@ -128,9 +149,10 @@
                 <?php while($category->next()): ?>
                     <a href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>" class="dropdown-item <?php if($this->is('category', $category->slug)): ?>current<?php endif; ?>"><?php $category->name(); ?></a>                
                 <?php endwhile; ?>
-  
               </div>
             </li>
+            <!--结束文章分类-->
+
             <?php else: ?>
             	<li class="nav-item">
             		<a href="<?php $this->options->siteUrl(); ?>" class="nav-link">
@@ -159,19 +181,6 @@
               </a>
           	</li>
         	<?php endfor; ?>
-            
-            <li class="nav-item d-none d-lg-block ml-lg-4">
-              <a no-pjax class="nav-link nav-link-icon" href="<?php $this->options->feedUrl(); ?>" target="_blank" data-toggle="tooltip" title="" data-original-title="文章RSS">
-                <i class="fa fa-rss"></i>
-                <span class="nav-link-inner--text d-lg-none">RSS</span>
-              </a>
-            </li>
-            <li class="nav-item d-none d-lg-block ml-lg-4">
-              <a no-pjax class="nav-link nav-link-icon" href="<?php $this->options->commentsFeedUrl(); ?>" target="_blank" data-toggle="tooltip" title="" data-original-title="评论RSS">
-                <i class="fa fa-rss-square"></i>
-                <span class="nav-link-inner--text d-lg-none">RSS</span>
-              </a>
-            </li>
           </ul>
         </div>
       </div>

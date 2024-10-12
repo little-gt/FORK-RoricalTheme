@@ -11,7 +11,7 @@
               </div>
               <div class="pl-4">
                 <h4 class="display-3">评论区</h4>
-                <p><?php $this->commentsNum('快来评论吧', '只有一条评论', '%d 条评论 '); ?></p>
+                <p><?php $this->commentsNum('还没有人评论', '只有一个人评论了', '有 %d 条评论 '); ?></p>
             </div>
                         
             
@@ -52,9 +52,8 @@ echo $commentClass;
                     </a>
                   </div>
                   <div class="pl-4" style="width:90%;">
-                  	
-                    <h5 class="title text-success breakword"><span class="badge badge-pill badge-primary"><?php echo $comments->levels(); ?>.</span><?php $comments->author(); ?></h5>
-                    <a class="text-success breakword"><?php $comments->date('Y F jS '); ?></a>
+                    <h5 class="title text-success breakword"><?php $comments->author(); ?></h5>
+                    <a class="text-success breakword"><?php LocationIP_Plugin::output($comments, "{loc}"); ?> <?php $comments->date('Y F jS '); ?></a>
                     <?php  
 					if($comments->parent){
     						$p_comment = getPermalinkFromCoid($comments->parent);   
@@ -66,7 +65,7 @@ echo $commentClass;
 						?> 
                     <p class="breakword"><?php $comments->content(); ?></p>
                     <?php if ($comments->status == 'waiting') { ?>
-						<span class="badge badge-pill badge-default text-white">评论审核ING...</span>
+						<span class="badge badge-pill badge-default text-white">你的评论正在审核...</span>
 					<?php } ?>
                     <?php $comments->reply('<i class="fa fa-reply"></i>'); ?>
                   </div>
@@ -170,7 +169,7 @@ echo $commentClass;
     <script>
     $("#mail").on('blur',function(){
     	
-    	url = "https://secure.gravatar.com/avatar/" + hex_md5($(this).val()) + "?s=40&d="
+    	url = "https://cdn.sep.cc/avatar/" + hex_md5($(this).val()) + "?s=40&d="
     	$("#author-head").css('background-image','url(' + url + ')'); 
     })
     
@@ -294,4 +293,3 @@ echo $commentClass;
 if(window.onload){window.onload()}
 
 </script>
-
