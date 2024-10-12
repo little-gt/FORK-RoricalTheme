@@ -25,7 +25,7 @@
             <?php while($this->next()): ?>
                 <div class="row-grid justify-content-between mt-lg card card-lift--hover shadow border-0" style="margin: auto;">
                     <a href="<?php $this->permalink() ?>" title="<?php $this->title() ?>">
-                        <img data-original="<?php echo($this->fields->pic ? $this->fields->pic : $this->options->randompicUrl() . "?_=" . mt_rand()) ?>" no-viewer class="card-img">
+                        <img src="<?php echo($this->fields->pic ? $this->fields->pic : $this->options->randompicUrl() . "?_=" . mt_rand()) ?>" no-viewer class="card-img">
                     </a>
                     <div class="card shadow">
                         <div class="card-body">

@@ -2,8 +2,8 @@
 /**
  * 炒鸡可爱的一款主题
  *
- * @package Rorical Theme
- * @author Rorical
+ * @package Ritical Theme 
+ * @author Ritical
  * @version 1.0
  */
 
